@@ -12,6 +12,9 @@
 users = User.create([
     {
         username: "fuckass",
-        password: "12345"
+        password: "12345",
+        backendName: "fuck_ass",
+        email: "fuckass@gmail.com",
+        dateOfBirth: DateTime.new(2025, 7, 14, 15, 32, 45),
     }
 ])

@@ -47,6 +47,6 @@ class RatingsController < ApplicationController
   private
 
   def rating_params
-	params.permit(:score, :user_id)
+	params.permit(:score, :user_id, :media_id, :mediaType)
   end
 end
