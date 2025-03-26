@@ -2,8 +2,6 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.hosts << /.*\.loca\.lt/
-  config.hosts << /.*\.ngrok-free\.app/
 
 
   # Make code changes take effect immediately without server restart.
@@ -30,6 +28,8 @@ Rails.application.configure do
 
   # Change to :null_store to avoid any caching.
   config.cache_store = :memory_store
+
+  config.secret_key_base = ENV['SECRET_KEY_BASE']
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local

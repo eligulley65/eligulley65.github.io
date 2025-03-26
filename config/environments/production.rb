@@ -12,6 +12,8 @@ Rails.application.configure do
   # Full error reports are disabled.
   config.consider_all_requests_local = false
 
+  config.secret_key_base = ENV['SECRET_KEY_BASE']
+
   # Turn on fragment caching in view templates.
   config.action_controller.perform_caching = true
 
