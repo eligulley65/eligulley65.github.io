@@ -1,4 +1,4 @@
-class Movie_to_genre < ApplicationRecord
+class MovieToGenre < ApplicationRecord
 	belongs_to :movieGenres
     belongs_to :movies
 end
