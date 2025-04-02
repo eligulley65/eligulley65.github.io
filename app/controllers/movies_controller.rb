@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
     end
 
     def genres
-      @movie_genres = Movies_to_movieGenres.find(params[:id])
+      @movie_genres = MovieToGenre.find(params[:id])
 
       if @movie_genres
         render json: @movie_genres, status: :ok
@@ -25,7 +25,7 @@ class MoviesController < ApplicationController
     end
 
     def genresFind
-      @genres = MovieGenres.find(params[:id])
+      @genres = MovieGenre.find(params[:id])
 
       if @genres
         render json: @genres, status: :ok
