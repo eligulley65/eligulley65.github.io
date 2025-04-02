@@ -32,4 +32,27 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_26_182518) do
     t.string "email"
     t.datetime "dateOfBirth"
   end
+
+  create_table "movies", force: :cascade do |t|
+    t.integer "movie_id"
+    t.string "original_language"
+    t.string "original_title"
+    t.string "title"
+    t.string "overview"
+    t.string "popularity"
+    t.string "poster_path"
+    t.string "release_date"
+    t.string "vote_average"
+    t.string "vote_count"
+    t.string "average_rating"
+  end
+
+  create_table "movieGenres", force: :cascade do |t|
+    t.integer "genre_id"
+    t.string "genre"
+  end
+
+  create_table "movies_to_movieGenres", force: :cascade do |t|
+    t.integer "movie_id"
+    t.integer "genre_id"
 end

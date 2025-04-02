@@ -23,4 +23,9 @@ Rails.application.routes.draw do
   get '/ratings/:id', to: 'ratings#show'
   patch '/ratings', to: 'ratings#update'
   delete '/ratings/:id', to: 'ratings#destroy'
+
+  get '/movies', to: 'movies#index'
+  get '/movies/:id', to: 'movies#show'
+  get '/movies/:id/genres', to: 'movies#genres'
+  get '/movies/genres/:id', to: 'movies#genresFind'
 end
