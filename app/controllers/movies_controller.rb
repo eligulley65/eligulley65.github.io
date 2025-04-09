@@ -42,6 +42,7 @@ class MoviesController < ApplicationController
         render json: @ratings, status: :ok
       else
         render json: {error: 'Ratings not found'}, status: :not_found
+      end
     end
 
   end
