@@ -5,7 +5,7 @@ class RecommendationsController < ApplicationController
     end
   
     def create
-      @recommendation = Recommendation.new(rating_params)
+      @recommendation = Recommendation.new(recommendation_params)
   
       if @recommendation.save
         render json: @recommendation, status: :created
@@ -27,7 +27,7 @@ class RecommendationsController < ApplicationController
     def update
       @recommendation = Recommendation.find(params[id])
       
-      if @recommendation.update(rating_params)
+      if @recommendation.update(recommendation_params)
         render json: @recommendation, status: :ok
       else
         render json: {error: 'Recommendation update failed'}, status: :unprocessable_entity
