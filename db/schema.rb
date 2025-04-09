@@ -56,3 +56,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_26_182518) do
     t.integer "movie_id"
     t.integer "genre_id"
 end
+
+  create_table "recommendations", force: :cascade do |t|
+    t.integer "score"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "media_id"
+  end

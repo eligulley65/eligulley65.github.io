@@ -28,4 +28,10 @@ Rails.application.routes.draw do
   get '/movies/:id', to: 'movies#show'
   get '/movies/:id/genres', to: 'movies#genres'
   get '/movies/genres/:id', to: 'movies#genresFind'
+
+  get '/recommendations', to: 'recommendations#index'
+  post '/recommendations', to: 'recommendations#create'
+  get '/recommendations/:id', to: 'recommendations#show'
+  patch '/recommendations/:id', to: 'users#update'
+  delete '/recommendations/:id', to: 'users#destroy'
 end
