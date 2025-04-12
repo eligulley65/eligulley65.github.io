@@ -33,6 +33,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_26_182518) do
     t.datetime "dateOfBirth"
   end
 
+  create_table "games", force: :cascase do |t|
+    t.integer "game_id"
+    t.integer "age_rating_id"
+    t.string "cover_url"
+    t.integer "first_release_date"
+    t.string "franchise"
+    t.string "name"
+    t.integer "rating"
+    t.integer "rating_count"
+    t.string "slug"
+    t.string "summary"
+    t.integer "total_rating"
+    t.integer "total_rating_count"
+    t.integer "version_parent"
+    t.string "version_title"
+    t.float "average_rating"
+  end
+
   create_table "movies", force: :cascade do |t|
     t.integer "movie_id"
     t.string "original_language"

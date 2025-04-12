@@ -30,6 +30,11 @@ Rails.application.routes.draw do
   get '/movies/genres/:id', to: 'movies#genresFind'
   get '/movies/:id/ratings', to: 'movies#ratings'
 
+  get '/games', to: 'games#index'
+  get '/games/:id', to: 'games#show'
+  get '/games/:id/ratings', to: 'games#ratings'
+  post '/games', to: 'games#create'
+
   get '/recommendations', to: 'recommendations#index'
   post '/recommendations', to: 'recommendations#create'
   get '/recommendations/:id', to: 'recommendations#show'
