@@ -5,7 +5,7 @@ class GamesController < ApplicationController
     end
   
     def create
-      @games = Game.new(game_params)
+      @game = Game.new(game_params)
   
       if @game.save
         render json: @game, status: :created
