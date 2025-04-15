@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
       if @movies
         render json: @movies, status: :ok
       else
-        render json: {error: 'Rating not found'}, status: :not_found
+        render json: {error: 'Movie not found'}, status: :not_found
       end
     end
 
@@ -34,6 +34,16 @@ class MoviesController < ApplicationController
       end
     end
 
+    def createGenres
+      @genre = MovieGenre.new(genre_params)
+
+      if @genre.save
+        render json: @genre, status: :created
+      else
+        render json: {error: 'Genre creation failed'}, status: :unprocessable_entity
+      end
+    end
+
     def ratings
       @movie = Movie.find(params[:id])
       @ratings = movie.Ratings
@@ -43,6 +53,10 @@ class MoviesController < ApplicationController
       else
         render json: {error: 'Ratings not found'}, status: :not_found
       end
+    end
+
+    def genre_params
+      params.permit(:movie_id, :genre_id)
     end
 
   end

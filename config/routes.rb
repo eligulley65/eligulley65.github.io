@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   get '/movies/:id/genres', to: 'movies#genres'
   get '/movies/genres/:id', to: 'movies#genresFind'
   get '/movies/:id/ratings', to: 'movies#ratings'
+  post '/movies/genres', to: 'movies#createGenre'
 
   get '/games', to: 'games#index'
   get '/games/:id', to: 'games#show'
