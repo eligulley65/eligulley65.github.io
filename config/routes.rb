@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get '/users/:id/ratings', to: 'users#ratings'
   patch '/users/:id', to: 'users#update'
   delete '/users/:id', to: 'users#destroy'
+  post '/login', to: 'users#login'
 
   get '/ratings', to: 'ratings#index'
   post '/ratings', to: 'ratings#create'
@@ -26,10 +27,9 @@ Rails.application.routes.draw do
 
   get '/movies', to: 'movies#index'
   get '/movies/:id', to: 'movies#show'
-  get '/movies/:id/genres', to: 'movies#genres'
-  get '/movies/genres/:id', to: 'movies#genresFind'
-  get '/movies/:id/ratings', to: 'movies#ratings'
-  post '/movies/genres', to: 'movies#createGenre'
+
+  get '/shows', to: 'shows#index'
+  get '/shows/:id', to: 'shows#show'
 
   get '/games', to: 'games#index'
   get '/games/:id', to: 'games#show'

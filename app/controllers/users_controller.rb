@@ -24,6 +24,16 @@ class UsersController < ApplicationController
 	end
   end
 
+  def login
+	user = User.find_by(email: params[:email])
+  
+	if user && user.password == params[:password]
+	  render json: { user: user }, status: :ok
+	else
+	  render json: { error: 'Invalid email or password' }, status: :unauthorized
+	end
+  end
+
   def ratings
 	@ratings = User.find(params[:id]).ratings
 	
