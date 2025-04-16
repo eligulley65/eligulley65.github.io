@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
     def index
       @movies = Movie.all
-      render json: @movies
+      render json: @movies, include: [:movies_to_movieGenres, :movieGenres]
     end
   
     def show
