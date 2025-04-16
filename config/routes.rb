@@ -39,6 +39,6 @@ Rails.application.routes.draw do
   get '/recommendations', to: 'recommendations#index'
   post '/recommendations', to: 'recommendations#create'
   get '/recommendations/:id', to: 'recommendations#show'
-  patch '/recommendations/:id', to: 'users#update'
-  delete '/recommendations/:id', to: 'users#destroy'
+  patch '/recommendations/:id', to: 'recommendations#update'
+  delete '/recommendations/:id', to: 'recommendations#destroy'
 end
