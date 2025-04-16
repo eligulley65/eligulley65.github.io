@@ -1,14 +1,17 @@
 class MoviesController < ApplicationController
     def index
-      @movies = Movie.all
+      @movies = Movie.includes(:movie_genres).all
       render json: @movies.as_json(include: :movie_genres)
     end
   
     def show
-      @movies = Movie.find(params[:id])
+      @movies = Movie.includes(:movie_genres).find(params[:id])
   
       if @movies
-        render json: @movies.as_json(include: :movie_genres), status: :ok
+        render json: {
+          movie: @movies,
+          genres: @movies.movie_genres
+        }, status: :ok
       else
         render json: {error: 'Movie not found'}, status: :not_found
       end
