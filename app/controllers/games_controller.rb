@@ -45,7 +45,7 @@ class GamesController < ApplicationController
     def createRating
       @rating = GameRating.new(rating_params)
 
-      if rating.save
+      if @rating.save
         render json: @rating, status: :created
 	    else
 	      render json: {error: 'Rating creation failed'}, status: :unprocessable_entity
