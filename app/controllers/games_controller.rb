@@ -1,27 +1,33 @@
 class GamesController < ApplicationController
     def index
-      @games = Game.all
-      render json: @games
-    end
-  
-    def create
-      @game = Game.new(game_params)
-  
-      if @game.save
-        render json: @game, status: :created
-      else
-        render json: {error: 'Game creation failed'}, status: :unprocessable_entity
-      end
+      per_page = (params[:per_page] || 100).to_i
+      page = (params[:page] || 1).to_i
+      offset = (page - 1) * per_page
+        
+      games = Game
+        .includes(:movie_genres)
+        .offset(offset)
+        .limit(per_page)
+        
+      render json: {
+        game: games.as_json(include: :game_genres),
+        current_page: page,
+        per_page: per_page,
+        next_page: games.size == per_page ? page + 1 : nil,
+        total_count: Game.count
+      }
     end
   
     def show
-      @game = Game.find(params[:id])
+      @games = Game.includes(:game_genres).find(params[:id])
   
       if @game
-        render json: @game, status: :ok
+        render json: {
+          game: @games,
+          game_genres: @games.game_genres
+        }, status: :ok
       else
-        render json: {error: 'Game not found'}, status: :not_found
-      end
+        render json: {error: 'Movie not found'}, status: :not_found
     end
 
     def ratings

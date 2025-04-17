@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/users/:id', to: 'users#show'
   get '/users/:id/ratings', to: 'users#ratings'
   patch '/users/:id', to: 'users#update'
+  patch '/users/:id/genres', to: 'users#updateGenres'
   delete '/users/:id', to: 'users#destroy'
   post '/login', to: 'users#login'
 
@@ -27,14 +28,15 @@ Rails.application.routes.draw do
 
   get '/movies', to: 'movies#index'
   get '/movies/:id', to: 'movies#show'
+  get '/movies/:id/ratings', to: 'movies#ratings'
 
   get '/shows', to: 'shows#index'
   get '/shows/:id', to: 'shows#show'
+  get '/shows/:id/ratings', to: 'shows#ratings'
 
   get '/games', to: 'games#index'
   get '/games/:id', to: 'games#show'
   get '/games/:id/ratings', to: 'games#ratings'
-  post '/games', to: 'games#create'
 
   get '/recommendations', to: 'recommendations#index'
   post '/recommendations', to: 'recommendations#create'

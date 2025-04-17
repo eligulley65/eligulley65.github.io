@@ -24,10 +24,21 @@ class MoviesController < ApplicationController
       if @movies
         render json: {
           movie: @movies,
-          show_genres: @movies.movie_genres
+          movie_genres: @movies.movie_genres
         }, status: :ok
       else
         render json: {error: 'Movie not found'}, status: :not_found
+      end
+    end
+
+    def ratings
+      @movie = Movie.find(params[:id])
+      @ratings = movie.Ratings
+
+      if @ratings
+        render json: @ratings, status: :ok
+      else
+        render json: {error: 'Ratings not found'}, status: :not_found
       end
     end
   end

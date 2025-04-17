@@ -30,5 +30,16 @@ class ShowsController < ApplicationController
         render json: {error: 'Show not found'}, status: :not_found
       end
     end
+
+    def ratings
+      @show = Show.find(params[:id])
+      @ratings = show.Ratings
+
+      if @ratings
+        render json: @ratings, status: :ok
+      else
+        render json: {error: 'Ratings not found'}, status: :not_found
+      end
+    end
   end
   

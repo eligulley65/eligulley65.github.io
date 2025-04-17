@@ -59,6 +59,16 @@ class UsersController < ApplicationController
 	end
   end
 
+  def updateGenres
+	@user = User.find(params[:id])
+
+	if @user.update(genre_params)
+		render json: @user
+	else
+		render json: {error: 'User Genres update failed'}, status: :not_found
+	end
+  end
+
   def destroy
 	@user = User.find(params[:id])
 
@@ -72,6 +82,10 @@ class UsersController < ApplicationController
   private
 
   def user_params
-	params.permit(:username, :password, :backendName, :email, :dateOfBirth)
+	params.permit(:username, :password, :backendName, :email, :dateOfBirth, :genre_json)
+  end
+
+  def genre_params
+	params.permit(:genre_json)
   end
 end
