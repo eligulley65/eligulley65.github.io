@@ -44,9 +44,9 @@ class UsersController < ApplicationController
 
 	if @user
 		render json: {
-			game_ratings: user.game_ratings,
-			show_ratings: user.show_ratings,
-			movie_ratings: user.movie_ratings
+			game_ratings: @user.game_ratings,
+			show_ratings: @user.show_ratings,
+			movie_ratings: @user.movie_ratings
 		  }, status: :ok
 	else
 	  render json: {error: 'Ratings not found'}, status: :not_found
