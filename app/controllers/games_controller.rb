@@ -21,7 +21,7 @@ class GamesController < ApplicationController
     def show
       @games = Game.includes(:game_genres).find(params[:id])
   
-      if @game
+      if @games
         render json: {
           game: @games,
           game_genres: @games.game_genres
@@ -33,7 +33,7 @@ class GamesController < ApplicationController
 
     def ratings
         @game = Game.find(params[:id])
-        @ratings = game.Game_Rating
+        @ratings = game.GameRating
   
         if @ratings
           render json: @ratings, status: :ok
