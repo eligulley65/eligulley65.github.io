@@ -43,7 +43,7 @@ class MoviesController < ApplicationController
     end
 
     def createRating
-      @rating = Movie_Rating.new(rating_params)
+      @rating = MovieRating.new(rating_params)
 
       if rating.save
         render json: @rating, status: :created
