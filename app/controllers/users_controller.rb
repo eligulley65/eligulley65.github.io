@@ -40,10 +40,14 @@ class UsersController < ApplicationController
   end
 
   def ratings
-	@ratings = User.find(params[:id]).ratings
-	
-	if @ratings
-	  render json: @ratings
+	@user = User.find(params[:id])
+
+	if @user
+		render json: {
+			game_ratings: user.game_ratings,
+			show_ratings: user.show_ratings,
+			movie_ratings: user.movie_ratings
+		  }, status: :ok
 	else
 	  render json: {error: 'Ratings not found'}, status: :not_found
 	end
