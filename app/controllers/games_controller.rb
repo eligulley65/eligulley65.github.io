@@ -27,7 +27,8 @@ class GamesController < ApplicationController
           game_genres: @games.game_genres
         }, status: :ok
       else
-        render json: {error: 'Movie not found'}, status: :not_found
+        render json: {error: 'Game not found'}, status: :not_found
+      end
     end
 
     def ratings
