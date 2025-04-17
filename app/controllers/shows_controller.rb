@@ -33,7 +33,7 @@ class ShowsController < ApplicationController
 
     def ratings
       @show = Show.find(params[:id])
-      @ratings = @show.ShowRatings
+      @ratings = @show.show_ratings
 
       if @ratings
         render json: @ratings, status: :ok

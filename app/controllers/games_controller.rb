@@ -33,7 +33,7 @@ class GamesController < ApplicationController
 
     def ratings
         @game = Game.find(params[:id])
-        @ratings = @game.GameRating
+        @ratings = @game.game_ratings
   
         if @ratings
           render json: @ratings, status: :ok
