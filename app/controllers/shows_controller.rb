@@ -33,13 +33,29 @@ class ShowsController < ApplicationController
 
     def ratings
       @show = Show.find(params[:id])
-      @ratings = show.Ratings
+      @ratings = show.Show_Ratings
 
       if @ratings
         render json: @ratings, status: :ok
       else
         render json: {error: 'Ratings not found'}, status: :not_found
       end
+    end
+
+    def createRating
+      @rating = Show_Rating.new(rating_params)
+
+      if rating.save
+        render json: @rating, status: :created
+	    else
+	      render json: {error: 'Rating creation failed'}, status: :unprocessable_entity
+	    end
+    end
+
+    private
+  
+    def rating_params
+      params.permit(:user_id, :show_id, :score)
     end
   end
   

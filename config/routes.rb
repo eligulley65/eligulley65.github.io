@@ -20,23 +20,20 @@ Rails.application.routes.draw do
   delete '/users/:id', to: 'users#destroy'
   post '/login', to: 'users#login'
 
-  get '/ratings', to: 'ratings#index'
-  post '/ratings', to: 'ratings#create'
-  get '/ratings/:id', to: 'ratings#show'
-  patch '/ratings', to: 'ratings#update'
-  delete '/ratings/:id', to: 'ratings#destroy'
-
   get '/movies', to: 'movies#index'
   get '/movies/:id', to: 'movies#show'
   get '/movies/:id/ratings', to: 'movies#ratings'
+  post '/movies/ratings', to: 'movies#createRating'
 
   get '/shows', to: 'shows#index'
   get '/shows/:id', to: 'shows#show'
   get '/shows/:id/ratings', to: 'shows#ratings'
+  post '/shows/ratings', to: 'shows#createRating'
 
   get '/games', to: 'games#index'
   get '/games/:id', to: 'games#show'
   get '/games/:id/ratings', to: 'games#ratings'
+  post '/games/ratings', to: 'games#createRating'
 
   get '/recommendations', to: 'recommendations#index'
   post '/recommendations', to: 'recommendations#create'

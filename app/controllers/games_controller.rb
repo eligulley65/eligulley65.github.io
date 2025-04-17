@@ -33,7 +33,7 @@ class GamesController < ApplicationController
 
     def ratings
         @game = Game.find(params[:id])
-        @ratings = game.Ratings
+        @ratings = game.Game_Rating
   
         if @ratings
           render json: @ratings, status: :ok
@@ -41,9 +41,23 @@ class GamesController < ApplicationController
           render json: {error: 'Ratings not found'}, status: :not_found
         end
       end
+    
+    def createRating
+      @rating = Game_Rating.new(rating_params)
+
+      if rating.save
+        render json: @rating, status: :created
+	    else
+	      render json: {error: 'Rating creation failed'}, status: :unprocessable_entity
+	    end
+    end
   
     private
   
+    def rating_params
+      params.permit(:user_id, :game_id, :score)
+    end
+
     def game_params
       params.permit(:game_id, :age_rating_id, :cover_url, :first_release_date, :franchise, :name, :rating, :rating_count, :slug, :summary, :total_rating, :total_rating_count, :version_parent, :version_title, :average_rating)
     end

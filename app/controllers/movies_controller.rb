@@ -33,13 +33,29 @@ class MoviesController < ApplicationController
 
     def ratings
       @movie = Movie.find(params[:id])
-      @ratings = movie.Ratings
+      @ratings = movie.Movie_Ratings
 
       if @ratings
         render json: @ratings, status: :ok
       else
         render json: {error: 'Ratings not found'}, status: :not_found
       end
+    end
+
+    def createRating
+      @rating = Movie_Rating.new(rating_params)
+
+      if rating.save
+        render json: @rating, status: :created
+	    else
+	      render json: {error: 'Rating creation failed'}, status: :unprocessable_entity
+	    end
+    end
+
+    private
+  
+    def rating_params
+      params.permit(:user_id, :movie_id, :score)
     end
   end
   
