@@ -33,7 +33,7 @@ class MoviesController < ApplicationController
 
     def ratings
       @movie = Movie.find(params[:id])
-      @ratings = movie.MovieRatings
+      @ratings = @movie.MovieRatings
 
       if @ratings
         render json: @ratings, status: :ok
