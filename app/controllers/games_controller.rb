@@ -5,7 +5,7 @@ class GamesController < ApplicationController
       offset = (page - 1) * per_page
         
       games = Game
-        .includes(:movie_genres)
+        .includes(:game_genres)
         .offset(offset)
         .limit(per_page)
         
