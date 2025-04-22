@@ -43,7 +43,8 @@ class GamesController < ApplicationController
       end
     
     def createRating
-      @rating = GameRating.new(rating_params)
+      @rating = GameRating.find_or_initialize_by(user_id: rating_params[:user_id], game_id: rating_params[:game_id])
+      @rating.score = rating_params[:score]
 
       if @rating.save
         render json: @rating, status: :created
@@ -56,10 +57,6 @@ class GamesController < ApplicationController
   
     def rating_params
       params.permit(:user_id, :game_id, :score)
-    end
-
-    def game_params
-      params.permit(:game_id, :age_rating_id, :cover_url, :first_release_date, :franchise, :name, :rating, :rating_count, :slug, :summary, :total_rating, :total_rating_count, :version_parent, :version_title, :average_rating)
     end
   end
   

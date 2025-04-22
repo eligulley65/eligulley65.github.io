@@ -43,7 +43,8 @@ class MoviesController < ApplicationController
     end
 
     def createRating
-      @rating = MovieRating.new(rating_params)
+      @rating = MovieRating.find_or_initialize_by(user_id: rating_params[:user_id], movie_id: rating_params[:movie_id])
+      @rating.score = rating_params[:score]
 
       if @rating.save
         render json: @rating, status: :created

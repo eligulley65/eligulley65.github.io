@@ -43,7 +43,8 @@ class ShowsController < ApplicationController
     end
 
     def createRating
-      @rating = ShowRating.new(rating_params)
+      @rating = ShowRating.find_or_initialize_by(user_id: rating_params[:user_id], show_id: rating_params[:show_id])
+      @rating.score = rating_params[:score]
 
       if @rating.save
         render json: @rating, status: :created
