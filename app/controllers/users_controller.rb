@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 	@user = User.new(user_params)
 
 	if @user.save
-	  @rating = MovieRating.find_or_initialize_by(user_id: @user.user_id, movie_id: 1)
+	  @rating = MovieRating.find_or_initialize_by(user_id: @user.id, movie_id: 1)
 	  @rating.score = 0
 	  @rating.save
 	  render json: @user, status: :created
