@@ -8,9 +8,10 @@ class UsersController < ApplicationController
 	@user = User.new(user_params)
 
 	if @user.save
-	  @rating = MovieRating.find_or_initialize_by(user_id: @user.id, movie_id: 1)
+	  @rating = MovieRating.find_or_initialize_by(user_id: @user.id, movie_id: 2)
 	  @rating.score = 0
-	  @rating.save
+	  if @rating.save
+		render json: @rating, status: :created
 	  render json: @user, status: :created
 	else
 	  render json: {error: 'User creation failed'}, status: :unprocessable_entity
